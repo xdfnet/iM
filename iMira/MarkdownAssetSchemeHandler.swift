@@ -1,6 +1,6 @@
 //
 //  MarkdownAssetSchemeHandler.swift
-//  md-preview
+//  iMira
 //
 
 import Foundation
@@ -30,7 +30,7 @@ nonisolated final class MarkdownAssetScheme: NSObject, WKURLSchemeHandler {
     /// 3 MB Mermaid blob from disk.
     private nonisolated static let vendorDataCache = VendorDataCache()
 
-    private let queue = DispatchQueue(label: "com.imarkdown.reader.asset-scheme", qos: .userInitiated)
+    private let queue = DispatchQueue(label: "com.imira.reader.asset-scheme", qos: .userInitiated)
     private let lock = NSLock()
     private var _baseURL: URL?
 

@@ -1,6 +1,6 @@
 //
 //  FileURLHelpers.swift
-//  md-preview
+//  iMira
 //
 
 import Foundation

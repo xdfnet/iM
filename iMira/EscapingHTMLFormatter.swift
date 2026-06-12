@@ -1,6 +1,6 @@
 //
 //  EscapingHTMLFormatter.swift
-//  md-preview
+//  iMira
 //
 
 import Foundation

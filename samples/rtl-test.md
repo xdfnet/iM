@@ -179,7 +179,7 @@ and [English link](https://example.com).
 ## 12. A paragraph with a forced LTR run
 
 Even when surrounded by ދިވެހި and العربية and עברית, identifiers like
-`iMarkdown.app` and URLs like https://github.com/example/repo
+`iMira.app` and URLs like https://github.com/example/repo
 and version strings like `v1.2.3-rc.4` should remain left-to-right and
 readable.
 

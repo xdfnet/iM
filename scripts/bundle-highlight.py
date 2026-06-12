@@ -17,7 +17,7 @@ from pathlib import Path
 VERSION = sys.argv[1] if len(sys.argv) > 1 else "11.10.0"
 CDN = f"https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@{VERSION}"
 LICENSE_URL = f"https://raw.githubusercontent.com/highlightjs/highlight.js/{VERSION}/LICENSE"
-DEST = Path("md-preview/Vendor/Highlight")
+DEST = Path("iMira/Vendor/Highlight")
 
 
 def fetch(url: str) -> bytes:
@@ -52,7 +52,7 @@ def main() -> int:
     (DEST / "highlight.min.css").write_text(combined, encoding="utf-8")
     (DEST / "Highlight-LICENSE.txt").write_bytes(license_text)
     # File name distinct so the synced-root-group resource copy doesn't
-    # collide with md-preview/Vendor/KaTeX/VERSION in the bundle output.
+    # collide with iMira/Vendor/KaTeX/VERSION in the bundle output.
     (DEST / "Highlight-VERSION").write_text(VERSION + "\n", encoding="utf-8")
 
     print(f"highlight.js {VERSION} bundled to {DEST}/")

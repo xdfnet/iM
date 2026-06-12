@@ -4,19 +4,19 @@
 
 ```sh
 # Release 构建（需代码签名）
-xcodebuild -project md-preview.xcodeproj -scheme md-preview -configuration Release build
+xcodebuild -project iMira.xcodeproj -scheme iMira -configuration Release build
 
 # Debug 构建（无需签名）
-xcodebuild -project md-preview.xcodeproj -scheme md-preview -configuration Debug build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
+xcodebuild -project iMira.xcodeproj -scheme iMira -configuration Debug build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
 
 # 运行逻辑测试
 swift test --package-path tests/swift-tests
 
 # 直接从 DerivedData 打开（不经过 /Applications/）
-open -a "$(find ~/Library/Developer/Xcode/DerivedData/md-preview-*/Build/Products/Release -name 'iMarkdown.app' -type d | head -1)" <文件.md>
+open -a "$(find ~/Library/Developer/Xcode/DerivedData/iMira-*/Build/Products/Release -name 'iMira.app' -type d | head -1)" <文件.md>
 
 # 注册 Quick Look 扩展（安装后执行）
-pluginkit -a /Applications/iMarkdown.app/Contents/PlugIns/quick-look.appex
+pluginkit -a /Applications/iMira.app/Contents/PlugIns/quick-look.appex
 ```
 
 ## 架构要点
@@ -43,7 +43,7 @@ Markdown 文件 → NSDocument → MarkdownHTML.render() → WKWebView.loadHTMLS
 
 ### Vendor JS
 
-编译时内联到 HTML 中，不懒加载、不用自定义 URL Scheme。位于 `md-preview/Vendor/`：
+编译时内联到 HTML 中，不懒加载、不用自定义 URL Scheme。位于 `iMira/Vendor/`：
 
 - DOMPurify（HTML 净化）
 - KaTeX（数学公式）
@@ -54,5 +54,5 @@ Markdown 文件 → NSDocument → MarkdownHTML.render() → WKWebView.loadHTMLS
 
 1. 更新 `Version.xcconfig` 中的 `MARKETING_VERSION`
 2. 更新 `CHANGELOG.md` 和 `README.md`
-3. `xcodebuild -project md-preview.xcodeproj -scheme md-preview -configuration Release build`
+3. `xcodebuild -project iMira.xcodeproj -scheme iMira -configuration Release build`
 4. 如需分发则复制到 `/Applications/`

@@ -1,6 +1,6 @@
 //
 //  MarkdownDocument.swift
-//  md-preview
+//  iMira
 //
 
 import Cocoa

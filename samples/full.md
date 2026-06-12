@@ -3,7 +3,7 @@ Sample Markdown Cheat Sheet
 
 This is a sample markdown file to help you write Markdown quickly :)
 
-If you use the fabulous [Sublime Text 2/3 editor][ST] along with the [iMarkdown plugin][iMarkdown], open your ST2 Palette with `CMD+⇧+P` then choose `iMarkdown in browser` to see the result in your browser.
+If you use the fabulous [Sublime Text 2/3 editor][ST] along with the [iMira plugin][iMira], open your ST2 Palette with `CMD+⇧+P` then choose `iMira in browser` to see the result in your browser.
 
 ## Text basics
 this is *italic* and this is **bold** .  another _italic_ and another __bold__
@@ -131,7 +131,7 @@ The Github Markdown also brings some [nice Emoji support][emoji] : :+1: :heart: 
 
 ## Parsers and Extensions
 
-iMarkdown comes with **Python-Markdown** preloaded.
+iMira comes with **Python-Markdown** preloaded.
 
 ### *Python-Markdown*
 
@@ -212,7 +212,7 @@ Some included ones are:
 
 There are also a number of others available:
 
-Just fork this repo and add your extensions inside the `.../Packages/iMarkdown/markdown/extensions/` folder.
+Just fork this repo and add your extensions inside the `.../Packages/iMira/markdown/extensions/` folder.
 
 Check out the list of [3rd Party extensions](
 https://github.com/waylan/Python-Markdown/wiki/Third-Party-Extensions).
@@ -284,7 +284,7 @@ This plugin and this sample file is proudly brought to you by the [revolunet tea
  [ref1]: http://revolunet.com
  [ref2]: http://revolunet.com "rich web apps"
  [MarkdownREF]: http://daringfireball.net/projects/markdown/basics
- [iMarkdown]: https://github.com/revolunet/sublimetext-markdown-preview
+ [iMira]: https://github.com/revolunet/sublimetext-markdown-preview
  [ST]: http://sublimetext.com
  [revolunet]: http://revolunet.com
  [revolunet-logo]: http://www.revolunet.com/static/parisjs8/img/logo-revolunet-carre.jpg "revolunet logo"

@@ -30,8 +30,8 @@ for (const button of buttons) {
 
 ```json
 {
-  "bundleId": "com.imarkdown.reader",
-  "productName": "iMarkdown",
+  "bundleId": "com.imira.reader",
+  "productName": "iMira",
   "features": ["math", "mermaid", "shiki"]
 }
 ```

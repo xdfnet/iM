@@ -112,7 +112,7 @@ reference location.
 [^first]: First footnote. Use the backlink to confirm the page jumps back to
     Section 1.
 
-[^middle]: Middle footnote with **bold text** and a [link](https://md-preview.app).
+[^middle]: Middle footnote with **bold text** and a [link](https://imira.app).
 
 [^repeat-long]: Repeated footnote. This should show two backlinks inline at the
     end of this definition.

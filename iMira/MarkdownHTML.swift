@@ -1,6 +1,6 @@
 //
 //  MarkdownHTML.swift
-//  md-preview
+//  iMira
 //
 
 import Foundation
@@ -71,7 +71,7 @@ nonisolated enum MarkdownHTML {
         // Warmup keeps the article in layout (so Mermaid's IntersectionObserver
         // still fires and the renderer actually executes) but invisible —
         // otherwise the synthetic diagram flashes on screen before the first
-        // real document arrives. `MdPreview.update` clears the inline style.
+        // real document arrives. `iMira.update` clears the inline style.
         let articleStyle = warmup
             ? " style=\"opacity:0;pointer-events:none\""
             : ""
@@ -266,11 +266,11 @@ nonisolated enum MarkdownHTML {
 
         let afterFences = replaceFullMatches(of: codeFenceRegex, in: split.markdown) { full in
             protected.append(full)
-            return "MdPreviewFootnoteProtect\(protected.count - 1)Token"
+            return "iMiraFootnoteProtect\(protected.count - 1)Token"
         }
         let afterInlineCode = replaceFullMatches(of: inlineCodeRegex, in: afterFences) { full in
             protected.append(full)
-            return "MdPreviewFootnoteProtect\(protected.count - 1)Token"
+            return "iMiraFootnoteProtect\(protected.count - 1)Token"
         }
 
         var orderedDefinitions: [FootnoteDefinition] = []
@@ -296,7 +296,7 @@ nonisolated enum MarkdownHTML {
 
             let ordinal = (referenceOrdinalsByNumber[definition.number] ?? 0) + 1
             referenceOrdinalsByNumber[definition.number] = ordinal
-            let token = "MdPreviewFootnoteRef\(references.count)Token"
+            let token = "iMiraFootnoteRef\(references.count)Token"
             references.append(FootnoteReference(token: token, number: definition.number, ordinal: ordinal))
             return token
         }
@@ -304,7 +304,7 @@ nonisolated enum MarkdownHTML {
         var restored = replacedReferences
         for (i, original) in protected.enumerated() {
             restored = restored.replacingOccurrences(
-                of: "MdPreviewFootnoteProtect\(i)Token",
+                of: "iMiraFootnoteProtect\(i)Token",
                 with: original
             )
         }
@@ -554,7 +554,7 @@ nonisolated enum MarkdownHTML {
     private static let mathTokenRegex: NSRegularExpression = {
         // swiftlint:disable:next force_try
         try! NSRegularExpression(
-            pattern: #"<p>MdPreviewMath(Block|Inline)(\d+)Token</p>|MdPreviewMath(Block|Inline)(\d+)Token"#
+            pattern: #"<p>iMiraMath(Block|Inline)(\d+)Token</p>|iMiraMath(Block|Inline)(\d+)Token"#
         )
     }()
 
@@ -584,10 +584,10 @@ nonisolated enum MarkdownHTML {
                 blocks.append(body)
                 // Surround with blank lines so swift-markdown wraps the standalone
                 // token in its own <p>, which mathTokenRegex then strips.
-                afterFences += "\n\nMdPreviewMathBlock\(blocks.count - 1)Token\n\n"
+                afterFences += "\n\niMiraMathBlock\(blocks.count - 1)Token\n\n"
             } else {
                 protected.append(nsMarkdown.substring(with: match.range))
-                afterFences += "MdPreviewProtect\(protected.count - 1)Token"
+                afterFences += "iMiraProtect\(protected.count - 1)Token"
             }
             fenceCursor = match.range.location + match.range.length
         }
@@ -596,22 +596,22 @@ nonisolated enum MarkdownHTML {
         // Inline code spans next, so $..$ inside `` `$x$` `` is not extracted.
         let afterInlineCode = replaceFullMatches(of: inlineCodeRegex, in: afterFences) { full in
             protected.append(full)
-            return "MdPreviewProtect\(protected.count - 1)Token"
+            return "iMiraProtect\(protected.count - 1)Token"
         }
 
         let afterBlockMath = replaceMatches(of: blockMathRegex, in: afterInlineCode) { capture in
             defer { blocks.append(capture) }
-            return "MdPreviewMathBlock\(blocks.count)Token"
+            return "iMiraMathBlock\(blocks.count)Token"
         }
         let afterInlineMath = replaceMatches(of: inlineMathRegex, in: afterBlockMath) { capture in
             defer { inlines.append(capture) }
-            return "MdPreviewMathInline\(inlines.count)Token"
+            return "iMiraMathInline\(inlines.count)Token"
         }
 
         var processed = afterInlineMath
         for (i, original) in protected.enumerated() {
             processed = processed.replacingOccurrences(
-                of: "MdPreviewProtect\(i)Token",
+                of: "iMiraProtect\(i)Token",
                 with: original
             )
         }
@@ -673,7 +673,7 @@ nonisolated enum MarkdownHTML {
             + (detail !== undefined ? ' ' + detail : '');
         try { post({ kind: 'log', message: msg }); } catch (e) {}
     }
-    window.MdPreviewPerf = { now: perfNow, log: perfLog, t0: perfT0 };
+    window.iMiraPerf = { now: perfNow, log: perfLog, t0: perfT0 };
     perfLog('script eval');
 
     if (typeof PerformanceObserver === 'function') {
@@ -697,7 +697,7 @@ nonisolated enum MarkdownHTML {
     private static let perfBridgeScript = """
     function perfNow() { return 0; }
     function perfLog() {}
-    window.MdPreviewPerf = { now: perfNow, log: perfLog };
+    window.iMiraPerf = { now: perfNow, log: perfLog };
     """
     #endif
 
@@ -747,7 +747,7 @@ nonisolated enum MarkdownHTML {
             });
         }
 
-        window.MdPreviewHost = { pushHeight, measureHeight };
+        window.iMiraHost = { pushHeight, measureHeight };
 
         function elementForEventTarget(target) {
             if (target instanceof Element) return target;
@@ -891,7 +891,7 @@ nonisolated enum MarkdownHTML {
         // Vendor lazy-load helpers. rAF is paused while the WKWebView is
         // offscreen (e.g. during the launch-time warmup before the window
         // becomes visible), so afterPaint also falls back to setTimeout(50).
-        window.MdPreviewLazy = {
+        window.iMiraLazy = {
             afterPaint(cb) {
                 function tick() {
                     let fired = false;
@@ -932,8 +932,8 @@ nonisolated enum MarkdownHTML {
             //   calls `run`
             lazyRenderer({ src, extras, run }) {
                 let loaded = false;
-                if (window.MdPreview && window.MdPreview.registerReapplier) {
-                    window.MdPreview.registerReapplier(() => { if (loaded) run(); });
+                if (window.iMira && window.iMira.registerReapplier) {
+                    window.iMira.registerReapplier(() => { if (loaded) run(); });
                 }
                 this.afterPaint(async () => {
                     try {
@@ -977,7 +977,7 @@ nonisolated enum MarkdownHTML {
                 // unsanitized HTML into innerHTML. This branch fires only if
                 // the bundled purify.min.js is missing from the app bundle.
                 if (window.console && console.error) {
-                    console.error('[md-preview] DOMPurify not loaded; refusing to render article.');
+                    console.error('[iMira] DOMPurify not loaded; refusing to render article.');
                 }
                 return '';
             }
@@ -988,15 +988,15 @@ nonisolated enum MarkdownHTML {
         // registers an idempotent reapplier that re-processes the current
         // article. Same-flag re-renders skip the WKWebView reload entirely.
         const reappliers = [];
-        window.MdPreview = window.MdPreview || {};
-        window.MdPreview.registerReapplier = (fn) => {
+        window.iMira = window.iMira || {};
+        window.iMira.registerReapplier = (fn) => {
             if (typeof fn === 'function') reappliers.push(fn);
         };
         // `opts.keepHidden` preserves the warmup opacity so the synthetic
         // Mermaid pre-render doesn't flash on screen. The host then issues a
         // second update without the flag once the real document arrives,
         // which clears the inline style and reveals the article.
-        window.MdPreview.update = (articleHTML, opts) => {
+        window.iMira.update = (articleHTML, opts) => {
             const article = document.querySelector('.markdown-body');
             if (!article) return;
             const tStart = perfNow();
@@ -1011,7 +1011,7 @@ nonisolated enum MarkdownHTML {
                     try { fn(); } catch (e) { /* one bad apple shouldn't block others */ }
                 }
             }
-            perfLog('MdPreview.update', '(+' + (perfNow() - tStart).toFixed(1) + 'ms)');
+            perfLog('iMira.update', '(+' + (perfNow() - tStart).toFixed(1) + 'ms)');
             pushHeight();
         };
 
@@ -1024,7 +1024,7 @@ nonisolated enum MarkdownHTML {
             if (!tmpl) return;
             const article = document.querySelector('.markdown-body');
             const keepHidden = !!(article && article.dataset.warmup === '1');
-            window.MdPreview.update(tmpl.innerHTML, { keepHidden });
+            window.iMira.update(tmpl.innerHTML, { keepHidden });
             tmpl.remove();
         }
 
@@ -1039,8 +1039,8 @@ nonisolated enum MarkdownHTML {
                 const article = document.querySelector('.markdown-body');
                 if (article) ro.observe(article);
             } catch (e) {}
-            window.addEventListener('md-preview-mermaid-rendered', pushHeight);
-            window.addEventListener('md-preview-math-rendered', pushHeight);
+            window.addEventListener('iMira-mermaid-rendered', pushHeight);
+            window.addEventListener('iMira-math-rendered', pushHeight);
             window.addEventListener('load', pushHeight);
         }
 
@@ -1086,13 +1086,13 @@ nonisolated enum MarkdownHTML {
                 el.dataset.mathDone = '1';
             }
         });
-        window.dispatchEvent(new Event('md-preview-math-rendered'));
+        window.dispatchEvent(new Event('iMira-math-rendered'));
     }
     """
 
     /// Inline DOMPurify so the bootstrap can call `DOMPurify.sanitize` before
     /// the first article ever reaches `innerHTML`. Emitted ahead of the host
-    /// bridge so the sanitizer is defined by the time `MdPreview.update` runs.
+    /// bridge so the sanitizer is defined by the time `iMira.update` runs.
     /// If the vendored file is missing (developer setup error), this returns
     /// empty and the bootstrap's `sanitize()` fails closed — rendering an
     /// empty article rather than shipping unsanitized HTML.
@@ -1114,8 +1114,8 @@ nonisolated enum MarkdownHTML {
         <script>
         (function() {
             \(katexRenderMathBody)
-            if (window.MdPreview && window.MdPreview.registerReapplier) {
-                window.MdPreview.registerReapplier(renderMath);
+            if (window.iMira && window.iMira.registerReapplier) {
+                window.iMira.registerReapplier(renderMath);
             }
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', renderMath, { once: true });
@@ -1145,7 +1145,7 @@ nonisolated enum MarkdownHTML {
             <script>
             (function() {
                 \(katexRenderMathBody)
-                window.MdPreviewLazy.lazyRenderer({
+                window.iMiraLazy.lazyRenderer({
                     src: '\(MarkdownAssetScheme.vendorURL("katex.min.js"))',
                     extras: ['\(MarkdownAssetScheme.vendorURL("copy-tex.min.js"))'],
                     run: renderMath,
@@ -1255,25 +1255,25 @@ nonisolated enum MarkdownHTML {
         const blocks = Array.prototype.slice.call(
             document.querySelectorAll('pre code[class*="language-"]:not([data-hljs-done="1"])')
         );
-        MdPreviewPerf.log('hljs highlightAll start', blocks.length + ' blocks');
+        iMiraPerf.log('hljs highlightAll start', blocks.length + ' blocks');
         let i = 0;
         function step() {
-            const sliceStart = MdPreviewPerf.now();
+            const sliceStart = iMiraPerf.now();
             while (i < blocks.length) {
                 const block = blocks[i++];
                 try {
                     hljs.highlightElement(block);
                 } catch (e) {
-                    MdPreviewPerf.log('hljs threw', String(e && e.message || e));
+                    iMiraPerf.log('hljs threw', String(e && e.message || e));
                 }
                 block.dataset.hljsDone = '1';
-                if (MdPreviewPerf.now() - sliceStart > 8) break;
+                if (iMiraPerf.now() - sliceStart > 8) break;
             }
             if (i < blocks.length) {
                 requestAnimationFrame(step);
             } else {
-                window.dispatchEvent(new Event('md-preview-hljs-rendered'));
-                MdPreviewPerf.log('hljs all done');
+                window.dispatchEvent(new Event('iMira-hljs-rendered'));
+                iMiraPerf.log('hljs all done');
             }
         }
         requestAnimationFrame(step);
@@ -1290,8 +1290,8 @@ nonisolated enum MarkdownHTML {
         <script>
         (function() {
             \(highlightAllBody)
-            if (window.MdPreview && window.MdPreview.registerReapplier) {
-                window.MdPreview.registerReapplier(highlightAll);
+            if (window.iMira && window.iMira.registerReapplier) {
+                window.iMira.registerReapplier(highlightAll);
             }
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', highlightAll, { once: true });
@@ -1318,7 +1318,7 @@ nonisolated enum MarkdownHTML {
             <script>
             (function() {
                 \(highlightAllBody)
-                window.MdPreviewLazy.lazyRenderer({
+                window.iMiraLazy.lazyRenderer({
                     src: '\(MarkdownAssetScheme.vendorURL("highlight.min.js"))',
                     run: highlightAll,
                 });
@@ -1405,7 +1405,7 @@ nonisolated enum MarkdownHTML {
                     await renderOne(figure);
                 }
                 draining = false;
-                window.dispatchEvent(new Event('md-preview-mermaid-rendered'));
+                window.dispatchEvent(new Event('iMira-mermaid-rendered'));
             }
 
             async function renderOne(figure) {
@@ -1623,8 +1623,8 @@ nonisolated enum MarkdownHTML {
             \(safeVendor)
 
             const __mdpMermaid = \(mermaidInitWiring);
-            if (window.MdPreview && window.MdPreview.registerReapplier) {
-                window.MdPreview.registerReapplier(__mdpMermaid.bootstrap);
+            if (window.iMira && window.iMira.registerReapplier) {
+                window.iMira.registerReapplier(__mdpMermaid.bootstrap);
             }
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', __mdpMermaid.bootstrap, { once: true });
@@ -1638,7 +1638,7 @@ nonisolated enum MarkdownHTML {
             <script>
             (() => {
                 let mm = null;
-                window.MdPreviewLazy.lazyRenderer({
+                window.iMiraLazy.lazyRenderer({
                     src: '\(MarkdownAssetScheme.vendorURL("mermaid.min.js"))',
                     run: () => {
                         mm = mm || \(mermaidInitWiring);

@@ -49,21 +49,21 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		9A0207C12FA0ED7C00092060 /* iMarkdown.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMarkdown.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A0207C12FA0ED7C00092060 /* iMira.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMira.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A02092D2FA10D4C00092060 /* quick-look.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "quick-look.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A02092F2FA10D4C00092060 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		9A0209A02FA1100100092060 /* Version.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Version.xcconfig; sourceTree = "<group>"; };
-		9AF000000000000000000101 /* mermaid.min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = mermaid.min.js; path = "md-preview/Vendor/Mermaid/mermaid.min.js"; sourceTree = "<group>"; };
-		9AF000000000000000000102 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; name = LICENSE; path = "md-preview/Vendor/Mermaid/LICENSE"; sourceTree = "<group>"; };
-		9AF000000000000000000103 /* katex.min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = katex.min.js; path = "md-preview/Vendor/KaTeX/katex.min.js"; sourceTree = "<group>"; };
-		9AF000000000000000000104 /* katex.min.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; name = katex.min.css; path = "md-preview/Vendor/KaTeX/katex.min.css"; sourceTree = "<group>"; };
-		9AF000000000000000000105 /* copy-tex.min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = "copy-tex.min.js"; path = "md-preview/Vendor/KaTeX/copy-tex.min.js"; sourceTree = "<group>"; };
-		9AF000000000000000000106 /* KaTeX-LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = "KaTeX-LICENSE.txt"; path = "md-preview/Vendor/KaTeX/KaTeX-LICENSE.txt"; sourceTree = "<group>"; };
-		9AF000000000000000000107 /* highlight.min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = highlight.min.js; path = "md-preview/Vendor/Highlight/highlight.min.js"; sourceTree = "<group>"; };
-		9AF000000000000000000108 /* highlight.min.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; name = highlight.min.css; path = "md-preview/Vendor/Highlight/highlight.min.css"; sourceTree = "<group>"; };
-		9AF000000000000000000109 /* Highlight-LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = "Highlight-LICENSE.txt"; path = "md-preview/Vendor/Highlight/Highlight-LICENSE.txt"; sourceTree = "<group>"; };
-		9AF00000000000000000010A /* purify.min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = purify.min.js; path = "md-preview/Vendor/DOMPurify/purify.min.js"; sourceTree = "<group>"; };
-		9AF00000000000000000010B /* DOMPurify-LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = "DOMPurify-LICENSE.txt"; path = "md-preview/Vendor/DOMPurify/DOMPurify-LICENSE.txt"; sourceTree = "<group>"; };
+		9AF000000000000000000101 /* mermaid.min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = mermaid.min.js; path = "iMira/Vendor/Mermaid/mermaid.min.js"; sourceTree = "<group>"; };
+		9AF000000000000000000102 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; name = LICENSE; path = "iMira/Vendor/Mermaid/LICENSE"; sourceTree = "<group>"; };
+		9AF000000000000000000103 /* katex.min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = katex.min.js; path = "iMira/Vendor/KaTeX/katex.min.js"; sourceTree = "<group>"; };
+		9AF000000000000000000104 /* katex.min.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; name = katex.min.css; path = "iMira/Vendor/KaTeX/katex.min.css"; sourceTree = "<group>"; };
+		9AF000000000000000000105 /* copy-tex.min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = "copy-tex.min.js"; path = "iMira/Vendor/KaTeX/copy-tex.min.js"; sourceTree = "<group>"; };
+		9AF000000000000000000106 /* KaTeX-LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = "KaTeX-LICENSE.txt"; path = "iMira/Vendor/KaTeX/KaTeX-LICENSE.txt"; sourceTree = "<group>"; };
+		9AF000000000000000000107 /* highlight.min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = highlight.min.js; path = "iMira/Vendor/Highlight/highlight.min.js"; sourceTree = "<group>"; };
+		9AF000000000000000000108 /* highlight.min.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; name = highlight.min.css; path = "iMira/Vendor/Highlight/highlight.min.css"; sourceTree = "<group>"; };
+		9AF000000000000000000109 /* Highlight-LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = "Highlight-LICENSE.txt"; path = "iMira/Vendor/Highlight/Highlight-LICENSE.txt"; sourceTree = "<group>"; };
+		9AF00000000000000000010A /* purify.min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = purify.min.js; path = "iMira/Vendor/DOMPurify/purify.min.js"; sourceTree = "<group>"; };
+		9AF00000000000000000010B /* DOMPurify-LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = "DOMPurify-LICENSE.txt"; path = "iMira/Vendor/DOMPurify/DOMPurify-LICENSE.txt"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -74,7 +74,7 @@
 			);
 			target = 9A02092C2FA10D4C00092060 /* quick-look */;
 		};
-		9A0209432FA10E6600092060 /* Exceptions for "md-preview" folder in "quick-look" target */ = {
+		9A0209432FA10E6600092060 /* Exceptions for "iMira" folder in "quick-look" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				CodeFenceInfo.swift,
@@ -89,12 +89,12 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		9A0207C32FA0ED7C00092060 /* md-preview */ = {
+		9A0207C32FA0ED7C00092060 /* iMira */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				9A0209432FA10E6600092060 /* Exceptions for "md-preview" folder in "quick-look" target */,
+				9A0209432FA10E6600092060 /* Exceptions for "iMira" folder in "quick-look" target */,
 			);
-			path = "md-preview";
+			path = "iMira";
 			sourceTree = "<group>";
 		};
 		9A0209312FA10D4C00092060 /* quick-look */ = {
@@ -143,7 +143,7 @@
 				9AF000000000000000000109 /* Highlight-LICENSE.txt */,
 				9AF00000000000000000010A /* purify.min.js */,
 				9AF00000000000000000010B /* DOMPurify-LICENSE.txt */,
-				9A0207C32FA0ED7C00092060 /* md-preview */,
+				9A0207C32FA0ED7C00092060 /* iMira */,
 				9A0209312FA10D4C00092060 /* quick-look */,
 				9A02092E2FA10D4C00092060 /* Frameworks */,
 				9A0207C22FA0ED7C00092060 /* Products */,
@@ -153,7 +153,7 @@
 		9A0207C22FA0ED7C00092060 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9A0207C12FA0ED7C00092060 /* iMarkdown.app */,
+				9A0207C12FA0ED7C00092060 /* iMira.app */,
 				9A02092D2FA10D4C00092060 /* quick-look.appex */,
 			);
 			name = Products;
@@ -170,9 +170,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9A0207C02FA0ED7C00092060 /* md-preview */ = {
+		9A0207C02FA0ED7C00092060 /* iMira */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9A0207D02FA0ED7D00092060 /* Build configuration list for PBXNativeTarget "md-preview" */;
+			buildConfigurationList = 9A0207D02FA0ED7D00092060 /* Build configuration list for PBXNativeTarget "iMira" */;
 			buildPhases = (
 				9A0207BD2FA0ED7C00092060 /* Sources */,
 				9A0207BE2FA0ED7C00092060 /* Frameworks */,
@@ -185,14 +185,14 @@
 				9A02093B2FA10D4C00092060 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				9A0207C32FA0ED7C00092060 /* md-preview */,
+				9A0207C32FA0ED7C00092060 /* iMira */,
 			);
-			name = "md-preview";
+			name = "iMira";
 			packageProductDependencies = (
 				9A3394092FA5AF500015D9A4 /* Markdown */,
 			);
-			productName = "md-preview";
-			productReference = 9A0207C12FA0ED7C00092060 /* iMarkdown.app */;
+			productName = "iMira";
+			productReference = 9A0207C12FA0ED7C00092060 /* iMira.app */;
 			productType = "com.apple.product-type.application";
 		};
 		9A02092C2FA10D4C00092060 /* quick-look */ = {
@@ -236,7 +236,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9A0207BC2FA0ED7C00092060 /* Build configuration list for PBXProject "md-preview" */;
+			buildConfigurationList = 9A0207BC2FA0ED7C00092060 /* Build configuration list for PBXProject "iMira" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -253,7 +253,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9A0207C02FA0ED7C00092060 /* md-preview */,
+				9A0207C02FA0ED7C00092060 /* iMira */,
 				9A02092C2FA10D4C00092060 /* quick-look */,
 			);
 		};
@@ -442,7 +442,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "md-preview/md-preview.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "iMira/iMira.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -454,6 +454,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -462,8 +463,8 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.imarkdown.reader;
-				PRODUCT_NAME = iMarkdown;
+				PRODUCT_BUNDLE_IDENTIFIER = com.imira.reader;
+				PRODUCT_NAME = iMira;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				REGISTER_APP_GROUPS = YES;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -480,7 +481,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "md-preview/md-preview.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "iMira/iMira.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -492,6 +493,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -500,8 +502,8 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.imarkdown.reader;
-				PRODUCT_NAME = iMarkdown;
+				PRODUCT_BUNDLE_IDENTIFIER = com.imira.reader;
+				PRODUCT_NAME = iMira;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				REGISTER_APP_GROUPS = YES;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -525,14 +527,14 @@
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "quick-look/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "iMarkdown Quick Look";
+				INFOPLIST_KEY_CFBundleDisplayName = "iMira Quick Look";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.imarkdown.reader.quicklook;
+				PRODUCT_BUNDLE_IDENTIFIER = com.imira.reader.quicklook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -555,14 +557,14 @@
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "quick-look/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "iMarkdown Quick Look";
+				INFOPLIST_KEY_CFBundleDisplayName = "iMira Quick Look";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.imarkdown.reader.quicklook;
+				PRODUCT_BUNDLE_IDENTIFIER = com.imira.reader.quicklook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -576,7 +578,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9A0207BC2FA0ED7C00092060 /* Build configuration list for PBXProject "md-preview" */ = {
+		9A0207BC2FA0ED7C00092060 /* Build configuration list for PBXProject "iMira" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9A0207CE2FA0ED7D00092060 /* Debug */,
@@ -585,7 +587,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9A0207D02FA0ED7D00092060 /* Build configuration list for PBXNativeTarget "md-preview" */ = {
+		9A0207D02FA0ED7D00092060 /* Build configuration list for PBXNativeTarget "iMira" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9A0207D12FA0ED7D00092060 /* Debug */,

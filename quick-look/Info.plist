@@ -14,12 +14,12 @@
 				<string>net.daringfireball.markdown</string>
 				<string>net.ia.markdown</string>
 				<string>com.unknown.md</string>
-				<string>com.imarkdown.reader.mdown</string>
-				<string>com.imarkdown.reader.mkd</string>
-				<string>com.imarkdown.reader.mkdn</string>
-				<string>com.imarkdown.reader.mdwn</string>
-				<string>com.imarkdown.reader.mdtxt</string>
-				<string>com.imarkdown.reader.mdtext</string>
+				<string>com.imira.reader.mdown</string>
+				<string>com.imira.reader.mkd</string>
+				<string>com.imira.reader.mkdn</string>
+				<string>com.imira.reader.mdwn</string>
+				<string>com.imira.reader.mdtxt</string>
+				<string>com.imira.reader.mdtext</string>
 			</array>
 			<key>QLSupportsSearchableItems</key>
 			<false/>

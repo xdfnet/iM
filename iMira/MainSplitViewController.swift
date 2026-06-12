@@ -1,6 +1,6 @@
 //
 //  MainSplitViewController.swift
-//  md-preview
+//  iMira
 //
 
 import Cocoa

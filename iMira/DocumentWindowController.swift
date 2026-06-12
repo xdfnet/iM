@@ -1,6 +1,6 @@
 //
 //  DocumentWindowController.swift
-//  md-preview
+//  iMira
 //
 
 import Cocoa
@@ -28,7 +28,7 @@ final class DocumentWindowController: NSWindowController, NSWindowDelegate {
             backing: .buffered,
             defer: false
         )
-        window.title = "iMarkdown"
+        window.title = "iMira"
         window.animationBehavior = .default
         super.init(window: window)
         setupWindow()
@@ -59,7 +59,7 @@ final class DocumentWindowController: NSWindowController, NSWindowDelegate {
     func display(markdown: String, fileURL: URL?) {
         currentFileURL = fileURL
         currentMarkdown = markdown
-        documentWindow.title = fileURL?.lastPathComponent ?? "iMarkdown"
+        documentWindow.title = fileURL?.lastPathComponent ?? "iMira"
         documentWindow.makeKeyAndOrderFront(nil)
         NSApp.activate()
 

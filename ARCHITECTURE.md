@@ -2,7 +2,7 @@
 
 ## 概览
 
-iMarkdown 是一个原生 macOS Markdown 阅读器，架构极简：
+iMira 是一个原生 macOS Markdown 阅读器，架构极简：
 
 ```
 用户打开文件 → NSDocument → 读取 Markdown → 渲染为 HTML → WKWebView 展示
@@ -114,7 +114,7 @@ ContentViewController.display()
 ## 文件结构
 
 ```
-md-preview/                     # 主 app 源码
+iMira/                     # 主 app 源码
 ├── AppDelegate.swift            # 应用生命周期
 ├── ContentViewController.swift  # WKWebView 包装器
 ├── DocumentWindowController.swift # 窗口管理
@@ -126,7 +126,7 @@ md-preview/                     # 主 app 源码
 ├── MarkdownAssetSchemeHandler.swift # URL Scheme（编译依赖）
 ├── CodeFenceInfo.swift          # 代码围栏语言解析
 ├── FileURLHelpers.swift         # URL 工具方法
-├── md-preview.entitlements      # 授权
+├── iMira.entitlements      # 授权
 ├── Assets.xcassets              # 资源
 ├── AppIcon.icon/                # 应用图标
 └── Vendor/                      # 第三方 JS 库

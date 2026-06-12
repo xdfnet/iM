@@ -2,7 +2,7 @@
 //
 // Local test scaffold for pure-Foundation helpers from the app and the
 // Quick Look extension. The Xcode project is the source of truth — source
-// files live under `quick-look/` and `md-preview/` and are symlinked into
+// files live under `quick-look/` and `iMira/` and are symlinked into
 // `Sources/<Target>/` so SPM can compile them without duplication.
 //
 // Run: `swift test --package-path tests/swift-tests`
@@ -10,7 +10,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "MdPreviewHelperTests",
+    name: "iMiraHelperTests",
     platforms: [.macOS(.v15)],
     dependencies: [
         .package(

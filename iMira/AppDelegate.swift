@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  md-preview
+//  iMira
 //
 
 import Cocoa
@@ -16,6 +16,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     ]
 
     func applicationDidFinishLaunching(_ notification: Notification) {
+        NSApp.setActivationPolicy(.accessory)
         checkForUpdatesMenuItem?.isHidden = true
     }
 

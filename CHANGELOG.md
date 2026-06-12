@@ -11,13 +11,15 @@
 ### 变更
 
 - **简化渲染架构。** 去掉了复杂的 NSScrollView / FlippedDocumentView / 高度回调 / 温启动 / 懒加载管线。现在直接使用纯 `WKWebView`，加载与 Quick Look 扩展相同的独立 HTML。
-- **恢复程序坞图标。** 取消了 LSUIElement 设置。
+- **隐藏程序坞图标。** App 以 agent 模式启动，不在程序坞或 Cmd-Tab 中显示，保留窗口打开能力。
+- **重命名为 iMira。** 更新 App 名、项目名、Bundle ID、菜单文案、文档和 Quick Look 扩展标识。
 - **重新设计应用图标。** 透明底蓝色几何单线 "M"，极简风格。
+- **明确 MIT 开源。** README 加入许可证、平台、技术栈和 Quick Look 支持卡片。
 - **精简沙箱权限。** 去掉 `com.apple.security.app-sandbox` 和文件读写例外，仅保留 `network.client` 用于远程资源加载。
 
 ### 移除
 
-- 所有不属于 iMarkdown 核心范围的上游功能：文档大纲、文件浏览器、检查器面板、搜索 UI、工具栏、CLI 安装器、编辑器联动、LLM 联动、分享、打印、缩放、文件夹打开、更新组件以及 Sparkle 依赖。
+- 所有不属于 iMira 核心范围的上游功能：文档大纲、文件浏览器、检查器面板、搜索 UI、工具栏、CLI 安装器、编辑器联动、LLM 联动、分享、打印、缩放、文件夹打开、更新组件以及 Sparkle 依赖。
 
 ### 清理
 
@@ -28,4 +30,4 @@
 
 ## [1.1.0] — 2026-06-11
 
-首个 iMarkdown 版本。从 `pluk-inc/markdown-preview` 复刻并重新品牌化。
+首个 iMira 版本。从 `pluk-inc/markdown-preview` 复刻并重新品牌化。
