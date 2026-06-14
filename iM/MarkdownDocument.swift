@@ -1,6 +1,6 @@
 //
 //  MarkdownDocument.swift
-//  iMira
+//  iM
 //
 
 import Cocoa

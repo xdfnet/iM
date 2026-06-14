@@ -1,38 +1,24 @@
-# iMira
+# iM
 
 原生 macOS Markdown 阅读器。开箱即用，干净利落。
 
 <p>
-  <a href="https://github.com/xdfnet/iMira/blob/main/LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-0ea5e9.svg"></a>
+  <a href="https://github.com/xdfnet/iM/blob/main/LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-0ea5e9.svg"></a>
   <img alt="macOS 15+" src="https://img.shields.io/badge/macOS-15%2B-111827.svg">
   <img alt="Swift" src="https://img.shields.io/badge/Swift-6-f97316.svg">
   <img alt="AppKit" src="https://img.shields.io/badge/AppKit-native-2563eb.svg">
   <img alt="Quick Look" src="https://img.shields.io/badge/Quick%20Look-supported-10b981.svg">
 </p>
 
-> 极简 Markdown 阅读器：原生 AppKit、秒开渲染、Finder 空格预览、后台 agent 模式。
+> 极简 Markdown 阅读器：原生 AppKit、秒开渲染、Finder 空格预览。
 
 ## 概述
-
-iMira 是一个极简的 Markdown 文件查看器，秒开、清晰、不打扰。
 
 - 原生 AppKit 实现，基于 WKWebView 渲染
 - 支持深色模式
 - Finder 空格预览（Quick Look）
 - 支持 KaTeX 数学公式、Mermaid 图表、代码高亮
-- 以后台 agent 模式启动，不占用程序坞和 Cmd-Tab
-
-## 支持格式
-
-`.md` `.markdown` `.mdown` `.mdwn` `.mkd` `.mkdn` `.mdtxt` `.mdtext`
-
-## 构建
-
-```sh
-xcodebuild -project iMira.xcodeproj -scheme iMira -configuration Release build
-```
-
-产物：`iMira.app`。依赖 Xcode 16+，macOS 15+。
+- 以 agent 模式启动，不占用程序坞和 Cmd-Tab
 
 ## 安装
 
@@ -40,17 +26,13 @@ xcodebuild -project iMira.xcodeproj -scheme iMira -configuration Release build
 make install
 ```
 
-安装到 `/Applications/iMira.app`，并注册 Quick Look 扩展。
+## 构建
 
-## 架构
+依赖 Xcode 16+，macOS 15+。
 
-渲染管线极简：
-
-1. `MarkdownDocument` 通过 NSDocument 读取文件
-2. `MarkdownHTML.render()` 将 markdown 转换为独立 HTML 页面（KaTeX、Mermaid、highlight.js、DOMPurify 全部内联）
-3. 直接由 `WKWebView`（`wantsLayer = true`）渲染，无 NSScrollView 嵌套、无 JS 高度桥接、无需温启动
-
-Quick Look 扩展复用同一套 `MarkdownHTML` 代码，预览效果一致性保证。
+```sh
+xcodebuild -project iM.xcodeproj -scheme iM -configuration Release build
+```
 
 ## 致谢
 

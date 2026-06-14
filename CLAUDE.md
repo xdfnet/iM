@@ -3,48 +3,37 @@
 ## 构建与测试
 
 ```sh
-# Release 构建（需代码签名）
-xcodebuild -project iMira.xcodeproj -scheme iMira -configuration Release build
+# Debug 构建
+make build
 
-# Debug 构建（无需签名）
-xcodebuild -project iMira.xcodeproj -scheme iMira -configuration Debug build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
+# Release 构建
+make release
 
-# 运行逻辑测试
-swift test --package-path tests/swift-tests
+# 安装到 /Applications/
+make install
 
-# 直接从 DerivedData 打开（不经过 /Applications/）
-open -a "$(find ~/Library/Developer/Xcode/DerivedData/iMira-*/Build/Products/Release -name 'iMira.app' -type d | head -1)" <文件.md>
+# 运行测试
+make test
 
-# 注册 Quick Look 扩展（安装后执行）
-pluginkit -a /Applications/iMira.app/Contents/PlugIns/quick-look.appex
+# 清理
+make clean
 ```
 
 ## 架构要点
 
-渲染管线极简：
-
-```
-Markdown 文件 → NSDocument → MarkdownHTML.render() → WKWebView.loadHTMLString()
-```
+原生 macOS AppKit Markdown 阅读器，基于 WKWebView 渲染。
 
 ### 核心模块
 
-- **MarkdownDocument** — NSDocument 子类，通过 Mutex 线程安全读取文件内容
-- **ContentViewController** — 持有单个 WKWebView（`wantsLayer = true`，macOS 15 必需）
 - **MarkdownHTML** — 将 markdown 渲染为独立 HTML，KaTeX/Mermaid/highlight.js/DOMPurify 全部内联
-- **DocumentWindowController** — 窗口生命周期，主屏居中
-- **Quick Look 扩展** — 复用同一套 MarkdownHTML 代码
-
-### macOS 15 注意事项
-
-1. WKWebView **必须**设置 `wantsLayer = true`，否则全黑屏不渲染
-2. Quick Look 扩展需要有效开发者证书签名（ad-hoc 签名被 `pluginkit` 拒绝）
-3. 应用已启用沙箱（仅 `network.client` 权限），沙箱需要完整的开发证书链
+- **EscapingHTMLFormatter** — 基于 swift-markdown 的自定义 HTML 格式化器，HTML 转义安全输出
+- **MarkdownFrontmatter** — YAML/TOML frontmatter 剥离与解析
+- **ContentViewController** — 主内容视图控制器
+- **MarkdownDocument** — NSDocument 子类，管理文件生命周期
 
 ### Vendor JS
 
-编译时内联到 HTML 中，不懒加载、不用自定义 URL Scheme。位于 `iMira/Vendor/`：
-
+位于 `iM/Vendor/`，编译时通过 Xcode Copy Files 打包到 app bundle：
 - DOMPurify（HTML 净化）
 - KaTeX（数学公式）
 - Mermaid（图表）
@@ -52,7 +41,7 @@ Markdown 文件 → NSDocument → MarkdownHTML.render() → WKWebView.loadHTMLS
 
 ## 发布流程
 
-1. 更新 `Version.xcconfig` 中的 `MARKETING_VERSION`
+1. 更新 `Version.xcconfig` 中的版本号
 2. 更新 `CHANGELOG.md` 和 `README.md`
-3. `xcodebuild -project iMira.xcodeproj -scheme iMira -configuration Release build`
-4. 如需分发则复制到 `/Applications/`
+3. `make release`
+4. `make install`

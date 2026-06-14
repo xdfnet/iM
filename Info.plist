@@ -19,12 +19,12 @@
 				<string>public.markdown</string>
 				<string>net.ia.markdown</string>
 				<string>com.unknown.md</string>
-				<string>com.imira.reader.mdown</string>
-				<string>com.imira.reader.mkd</string>
-				<string>com.imira.reader.mkdn</string>
-				<string>com.imira.reader.mdwn</string>
-				<string>com.imira.reader.mdtxt</string>
-				<string>com.imira.reader.mdtext</string>
+				<string>net.daringfireball.im.mdown</string>
+				<string>net.daringfireball.im.mkd</string>
+				<string>net.daringfireball.im.mkdn</string>
+				<string>net.daringfireball.im.mdwn</string>
+				<string>net.daringfireball.im.mdtxt</string>
+				<string>net.daringfireball.im.mdtext</string>
 			</array>
 		</dict>
 	</array>
@@ -121,7 +121,7 @@
 			<key>UTTypeDescription</key>
 			<string>Markdown Document (mdown)</string>
 			<key>UTTypeIdentifier</key>
-			<string>com.imira.reader.mdown</string>
+			<string>net.daringfireball.im.mdown</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
@@ -138,7 +138,7 @@
 			<key>UTTypeDescription</key>
 			<string>Markdown Document (mkd)</string>
 			<key>UTTypeIdentifier</key>
-			<string>com.imira.reader.mkd</string>
+			<string>net.daringfireball.im.mkd</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
@@ -155,7 +155,7 @@
 			<key>UTTypeDescription</key>
 			<string>Markdown Document (mkdn)</string>
 			<key>UTTypeIdentifier</key>
-			<string>com.imira.reader.mkdn</string>
+			<string>net.daringfireball.im.mkdn</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
@@ -172,7 +172,7 @@
 			<key>UTTypeDescription</key>
 			<string>Markdown Document (mdwn)</string>
 			<key>UTTypeIdentifier</key>
-			<string>com.imira.reader.mdwn</string>
+			<string>net.daringfireball.im.mdwn</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
@@ -189,7 +189,7 @@
 			<key>UTTypeDescription</key>
 			<string>Markdown Document (mdtxt)</string>
 			<key>UTTypeIdentifier</key>
-			<string>com.imira.reader.mdtxt</string>
+			<string>net.daringfireball.im.mdtxt</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
@@ -206,7 +206,7 @@
 			<key>UTTypeDescription</key>
 			<string>Markdown Document (mdtext)</string>
 			<key>UTTypeIdentifier</key>
-			<string>com.imira.reader.mdtext</string>
+			<string>net.daringfireball.im.mdtext</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>

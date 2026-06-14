@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  iMira
+//  iM
 //
 
 import Cocoa

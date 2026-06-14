@@ -1,6 +1,6 @@
 //
 //  MarkdownFrontmatter.swift
-//  iMira
+//  iM
 //
 
 import Foundation
