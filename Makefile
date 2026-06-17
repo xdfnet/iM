@@ -1,7 +1,7 @@
 XCODE_PROJECT = iM.xcodeproj
 SCHEME = iM
 
-.PHONY: build release install clean test run
+.PHONY: build release install clean test run archive
 
 build:
 	xcodebuild -project $(XCODE_PROJECT) -scheme $(SCHEME) -configuration Debug build \
@@ -9,6 +9,10 @@ build:
 
 release:
 	xcodebuild -project $(XCODE_PROJECT) -scheme $(SCHEME) -configuration Release build
+
+archive:
+	xcodebuild -project $(XCODE_PROJECT) -scheme $(SCHEME) -configuration Release \
+		-archivePath ~/Desktop/iM.xcarchive archive
 
 install: release
 	sudo rm -rf /Applications/iM.app
@@ -19,6 +23,7 @@ install: release
 
 clean:
 	rm -rf ~/Library/Developer/Xcode/DerivedData/iM-*
+	rm -rf ~/Desktop/iM.xcarchive
 	rm -rf .build
 
 test:

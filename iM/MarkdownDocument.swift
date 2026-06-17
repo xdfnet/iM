@@ -34,6 +34,8 @@ final class MarkdownDocument: NSDocument {
     }
 
     override nonisolated func read(from url: URL, ofType typeName: String) throws {
+        let accessing = url.startAccessingSecurityScopedResource()
+        defer { if accessing { url.stopAccessingSecurityScopedResource() } }
         let data = try Data(contentsOf: url)
         try read(from: data, ofType: typeName)
     }

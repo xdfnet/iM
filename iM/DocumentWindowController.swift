@@ -10,9 +10,19 @@ final class DocumentWindowController: NSWindowController, NSWindowDelegate {
     private var currentFileURL: URL?
     private var currentMarkdown: String?
 
+    /// Ensures the window is loaded before access.
     private var documentWindow: NSWindow {
         guard let window else {
-            fatalError("DocumentWindowController accessed before its window was loaded")
+            // This should never happen — window is set in init().
+            // Fall back gracefully rather than crashing in production.
+            let fallback = NSWindow(
+                contentRect: NSRect(x: 0, y: 0, width: 900, height: 680),
+                styleMask: [.titled, .closable, .miniaturizable, .resizable],
+                backing: .buffered,
+                defer: false
+            )
+            self.window = fallback
+            return fallback
         }
         return window
     }
@@ -78,8 +88,10 @@ final class DocumentWindowController: NSWindowController, NSWindowDelegate {
             )
     }
 
-    private func loadFile(at url: URL, silentOnFailure: Bool = false) {
+    private func loadFile(at url: URL) {
         do {
+            let accessing = url.startAccessingSecurityScopedResource()
+            defer { if accessing { url.stopAccessingSecurityScopedResource() } }
             let data = try Data(contentsOf: url)
             guard let markdown = String(data: data, encoding: .utf8) else {
                 throw CocoaError(.fileReadCorruptFile)
@@ -88,9 +100,7 @@ final class DocumentWindowController: NSWindowController, NSWindowDelegate {
             markdownDocument?.replaceContents(markdown: markdown, fileURL: url)
             renderCurrentDocument(text: markdown, fileURL: url)
         } catch {
-            if !silentOnFailure {
-                NSAlert(error: error).runModal()
-            }
+            NSAlert(error: error).runModal()
         }
     }
 
