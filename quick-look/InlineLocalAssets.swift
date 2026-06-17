@@ -74,14 +74,22 @@ enum InlineLocalAssets {
         return Result(html: output, attachments: attachments)
     }
 
+    /// Compiles an `NSRegularExpression` from a literal pattern.
+    /// Uses `preconditionFailure` for development-time detection of bad patterns.
+    private static func regex(_ pattern: String,
+                              options: NSRegularExpression.Options = []) -> NSRegularExpression {
+        do {
+            return try NSRegularExpression(pattern: pattern, options: options)
+        } catch {
+            preconditionFailure("Invalid regex pattern: \(error)")
+        }
+    }
+
     // Matches the double-quoted image tags emitted by MarkdownHTML's renderer.
-    private static let imgSrcRegex: NSRegularExpression = {
-        // swiftlint:disable:next force_try
-        try! NSRegularExpression(
-            pattern: #"(<img\b[^>]*?\bsrc=")([^"]*)(")"#,
-            options: [.caseInsensitive]
-        )
-    }()
+    private static let imgSrcRegex = regex(
+        #"(<img\b[^>]*?\bsrc=")([^"]*)(")"#,
+        options: [.caseInsensitive]
+    )
 
     /// Returns nil for srcs that should not be rewritten (absolute URLs,
     /// fragment refs, host-absolute paths, empty values).

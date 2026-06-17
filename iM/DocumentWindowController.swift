@@ -5,6 +5,7 @@
 
 import Cocoa
 
+@MainActor
 final class DocumentWindowController: NSWindowController, NSWindowDelegate {
 
     private var currentFileURL: URL?

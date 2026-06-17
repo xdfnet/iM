@@ -113,10 +113,23 @@ nonisolated enum MarkdownHTML {
         )
     }
 
-    private static let headingTagRegex: NSRegularExpression = {
-        // swiftlint:disable:next force_try
-        try! NSRegularExpression(pattern: "<h([1-6])>")
-    }()
+    // MARK: - Regex helper
+
+    /// Compiles an `NSRegularExpression` from a literal pattern.
+    /// Uses `preconditionFailure` so the crash is caught during development
+    /// if a pattern is malformed, rather than crashing on a user's machine.
+    private static func regex(_ pattern: String,
+                              options: NSRegularExpression.Options = []) -> NSRegularExpression {
+        do {
+            return try NSRegularExpression(pattern: pattern, options: options)
+        } catch {
+            preconditionFailure("Invalid regex pattern: \(error)")
+        }
+    }
+
+    // MARK: - Heading IDs
+
+    private static let headingTagRegex = regex("<h([1-6])>")
 
     private static func injectHeadingIDs(in html: String) -> String {
         let nsHtml = html as NSString
@@ -147,15 +160,9 @@ nonisolated enum MarkdownHTML {
     // MARK: - RTL Direction
 
     // Matches opening <p>, <li>, or <h1>-<h6> tags
-    private static let rtlTagRegex: NSRegularExpression = {
-        // swiftlint:disable:next force_try
-        try! NSRegularExpression(pattern: #"<(p|li|h[1-6])(\s[^>]*)?>"#, options: [.caseInsensitive])
-    }()
+    private static let rtlTagRegex = regex(#"<(p|li|h[1-6])(\s[^>]*)?>"#, options: [.caseInsensitive])
 
-    private static let htmlTagRegex: NSRegularExpression = {
-        // swiftlint:disable:next force_try
-        try! NSRegularExpression(pattern: #"<[^>]+>"#)
-    }()
+    private static let htmlTagRegex = regex(#"<[^>]+>"#)
 
     // RTL Unicode ranges: Hebrew, Arabic (+ supplements), Syriac, Thaana, N'Ko, Samaritan, Mandaic
     private static let rtlRanges: [ClosedRange<UInt32>] = [
@@ -250,15 +257,9 @@ nonisolated enum MarkdownHTML {
         let containsMermaid: Bool
     }
 
-    private static let footnoteDefinitionRegex: NSRegularExpression = {
-        // swiftlint:disable:next force_try
-        try! NSRegularExpression(pattern: #"^[ \t]{0,3}\[\^([^\]\n]+)\]:[ \t]*(.*)$"#)
-    }()
+    private static let footnoteDefinitionRegex = regex(#"^[ \t]{0,3}\[\^([^\]\n]+)\]:[ \t]*(.*)$"#)
 
-    private static let footnoteReferenceRegex: NSRegularExpression = {
-        // swiftlint:disable:next force_try
-        try! NSRegularExpression(pattern: #"\[\^([^\]\n]+)\]"#)
-    }()
+    private static let footnoteReferenceRegex = regex(#"\[\^([^\]\n]+)\]"#)
 
     private static func extractFootnotes(from markdown: String) -> FootnoteExtraction {
         let split = splitFootnoteDefinitions(from: markdown)
@@ -519,44 +520,29 @@ nonisolated enum MarkdownHTML {
         let containsMath: Bool
     }
 
-    private static let blockMathRegex: NSRegularExpression = {
-        // swiftlint:disable:next force_try
-        try! NSRegularExpression(pattern: #"\$\$([\s\S]+?)\$\$"#)
-    }()
+    private static let blockMathRegex = regex(#"\$\$([\s\S]+?)\$\$"#)
 
     // Reject leading `\$` (escaped) and require non-whitespace adjacent to
     // delimiters so prose like "$5 and $10" doesn't match.
-    private static let inlineMathRegex: NSRegularExpression = {
-        // swiftlint:disable:next force_try
-        try! NSRegularExpression(pattern: #"(?<!\\)\$(?=\S)([^\$\n]+?)(?<=\S)\$"#)
-    }()
+    private static let inlineMathRegex = regex(#"(?<!\\)\$(?=\S)([^\$\n]+?)(?<=\S)\$"#)
 
     // Fenced code block. Group 1 = backtick run, group 2 = info string, group 3 = body.
-    private static let codeFenceRegex: NSRegularExpression = {
-        // swiftlint:disable:next force_try
-        try! NSRegularExpression(
-            pattern: #"(?m)^(`{3,})[ \t]*([^\n`]*)\n([\s\S]*?)\n\1[ \t]*$"#
-        )
-    }()
+    private static let codeFenceRegex = regex(
+        #"(?m)^(`{3,})[ \t]*([^\n`]*)\n([\s\S]*?)\n\1[ \t]*$"#
+    )
 
     // Inline code span: matched-length backtick runs that are not adjacent to other
     // backticks. Mirrors CommonMark so spans like `` ` ```math ` `` (single-backtick
     // delimiters around three inner backticks) tokenize correctly.
-    private static let inlineCodeRegex: NSRegularExpression = {
-        // swiftlint:disable:next force_try
-        try! NSRegularExpression(pattern: #"(?<!`)(`+)(?!`)([^\n]*?)(?<!`)\1(?!`)"#)
-    }()
+    private static let inlineCodeRegex = regex(#"(?<!`)(`+)(?!`)([^\n]*?)(?<!`)\1(?!`)"#)
 
     // First alternative captures kind+index for a paragraph-wrapped block token
     // (the common case after swift-markdown wraps the standalone token); the
     // second captures a bare token. The wrapper is stripped in either case for
     // block kind to keep the resulting `<div>` out of an enclosing `<p>`.
-    private static let mathTokenRegex: NSRegularExpression = {
-        // swiftlint:disable:next force_try
-        try! NSRegularExpression(
-            pattern: #"<p>iMMath(Block|Inline)(\d+)Token</p>|iMMath(Block|Inline)(\d+)Token"#
-        )
-    }()
+    private static let mathTokenRegex = regex(
+        #"<p>iMMath(Block|Inline)(\d+)Token</p>|iMMath(Block|Inline)(\d+)Token"#
+    )
 
     private static func extractMath(from markdown: String) -> MathExtraction {
         var blocks: [String] = []
@@ -1235,12 +1221,9 @@ nonisolated enum MarkdownHTML {
 
     // Excludes `language-mermaid` since renderMermaidBlocks already lifted
     // those into `<figure>` containers before this runs.
-    private static let highlightableCodeRegex: NSRegularExpression = {
-        // swiftlint:disable:next force_try
-        try! NSRegularExpression(
-            pattern: #"<pre><code class="language-(?!mermaid")[a-zA-Z0-9_+#-]+""#
-        )
-    }()
+    private static let highlightableCodeRegex = regex(
+        #"<pre><code class="language-(?!mermaid")[a-zA-Z0-9_+#-]+""#
+    )
 
     private static func detectHighlightableCode(in html: String) -> Bool {
         firstMatch(of: highlightableCodeRegex, in: html) != nil
@@ -1335,12 +1318,9 @@ nonisolated enum MarkdownHTML {
         let containsMermaid: Bool
     }
 
-    private static let mermaidRegex: NSRegularExpression = {
-        // swiftlint:disable:next force_try
-        try! NSRegularExpression(
-            pattern: #"<pre><code class="language-mermaid">([\s\S]*?)</code></pre>"#
-        )
-    }()
+    private static let mermaidRegex = regex(
+        #"<pre><code class="language-mermaid">([\s\S]*?)</code></pre>"#
+    )
 
     private static func renderMermaidBlocks(in html: String) -> MermaidRenderResult {
         guard html.contains("language-mermaid") else {

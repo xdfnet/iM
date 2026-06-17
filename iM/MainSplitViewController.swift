@@ -5,6 +5,7 @@
 
 import Cocoa
 
+@MainActor
 final class MainSplitViewController: NSViewController {
 
     private let contentViewController = ContentViewController()

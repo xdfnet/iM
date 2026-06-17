@@ -1,15 +1,18 @@
 import Cocoa
 import WebKit
 
+@MainActor
 final class ContentViewController: NSViewController, WKNavigationDelegate {
 
-    private var webView: WKWebView!
+    private let webView: WKWebView = {
+        let config = WKWebViewConfiguration()
+        config.userContentController.addUserScript(ContentViewController.disableContextMenu)
+        let wv = WKWebView(frame: .zero, configuration: config)
+        wv.wantsLayer = true
+        return wv
+    }()
 
     override func loadView() {
-        let config = WKWebViewConfiguration()
-        config.userContentController.addUserScript(disableContextMenu)
-        webView = WKWebView(frame: .zero, configuration: config)
-        webView.wantsLayer = true
         webView.navigationDelegate = self
         view = webView
     }
@@ -34,7 +37,7 @@ final class ContentViewController: NSViewController, WKNavigationDelegate {
         decisionHandler(.allow)
     }
 
-    private let disableContextMenu: WKUserScript = {
+    private static let disableContextMenu: WKUserScript = {
         WKUserScript(source: """
         document.addEventListener('contextmenu', event => {
             const sel = window.getSelection();

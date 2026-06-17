@@ -7,6 +7,7 @@ import Cocoa
 import UniformTypeIdentifiers
 
 @main
+@MainActor
 final class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet private weak var checkForUpdatesMenuItem: NSMenuItem?
