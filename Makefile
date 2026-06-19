@@ -5,10 +5,11 @@ SCHEME = iM
 
 build:
 	xcodebuild -project $(XCODE_PROJECT) -scheme $(SCHEME) -configuration Debug build \
-		CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
+		CODE_SIGN_IDENTITY="-" CODE_SIGN_STYLE=Manual
 
 release:
-	xcodebuild -project $(XCODE_PROJECT) -scheme $(SCHEME) -configuration Release build
+	xcodebuild -project $(XCODE_PROJECT) -scheme $(SCHEME) -configuration Release build \
+		CODE_SIGN_IDENTITY="-" CODE_SIGN_STYLE=Manual
 
 archive:
 	xcodebuild -project $(XCODE_PROJECT) -scheme $(SCHEME) -configuration Release \

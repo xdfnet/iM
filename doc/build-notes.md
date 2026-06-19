@@ -2,27 +2,15 @@
 
 ## 开发证书已吊销
 
-当前开发证书已被吊销，无法使用正常的代码签名。构建时需要绕过签名：
+当前开发证书已被吊销，无法使用正常的代码签名。`Makefile` 已配置为 ad-hoc 签名（`CODE_SIGN_IDENTITY="-"`），`make build` / `make release` / `make install` 均可直接使用，无需额外操作。
 
 ```sh
-# Release 构建
-xcodebuild -project iM.xcodeproj -scheme iM -configuration Release build \
-  CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
+# 直接构建安装
+make build     # Debug 构建（ad-hoc 签名）
+make install   # Release 构建 + 安装到 /Applications（ad-hoc 签名）
 ```
 
-但直接用 `make install`（内部执行 `make release`）会失败，因为 `make release` 没有传免签名参数。
-
-**推荐方式：**
-
-```sh
-xcodebuild -project iM.xcodeproj -scheme iM -configuration Release build \
-  CODE_SIGN_IDENTITY="-" CODE_SIGN_STYLE=Manual
-  
-# 然后手动复制到 /Applications
-cp -R "$(find ~/Library/Developer/Xcode/DerivedData/iM-*/Build/Products/Release -name 'iM.app' -type d | head -1)" /Applications/iM.app
-```
-
-用 Xcode 命令行直接构建（传 `-` 作为签名身份）会自动带上硬化运行时（`-o runtime`），这是 macOS 26 所要求的。
+ad-hoc 签名用 `-` 作为签名身份，Xcode 会自动生成本地签名并附带 hardened runtime（`-o runtime`），满足 macOS 26 要求。
 
 ## QuickLook 插件注册
 
