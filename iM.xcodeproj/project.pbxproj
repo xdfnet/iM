@@ -49,20 +49,20 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		9A0207C12FA0ED7C00092060 /* iMira.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMira.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A0207C12FA0ED7C00092060 /* iM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A02092D2FA10D4C00092060 /* quick-look.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "quick-look.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A02092F2FA10D4C00092060 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		9A0209A02FA1100100092060 /* Version.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Version.xcconfig; sourceTree = "<group>"; };
-		9AF000000000000000000101 /* mermaid.min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = mermaid.min.js; path = "iM/Vendor/Mermaid/mermaid.min.js"; sourceTree = "<group>"; };
-		9AF000000000000000000102 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; name = LICENSE; path = "iM/Vendor/Mermaid/LICENSE"; sourceTree = "<group>"; };
-		9AF000000000000000000103 /* katex.min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = katex.min.js; path = "iM/Vendor/KaTeX/katex.min.js"; sourceTree = "<group>"; };
-		9AF000000000000000000104 /* katex.min.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; name = katex.min.css; path = "iM/Vendor/KaTeX/katex.min.css"; sourceTree = "<group>"; };
+		9AF000000000000000000101 /* mermaid.min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = mermaid.min.js; path = iM/Vendor/Mermaid/mermaid.min.js; sourceTree = "<group>"; };
+		9AF000000000000000000102 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; name = LICENSE; path = iM/Vendor/Mermaid/LICENSE; sourceTree = "<group>"; };
+		9AF000000000000000000103 /* katex.min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = katex.min.js; path = iM/Vendor/KaTeX/katex.min.js; sourceTree = "<group>"; };
+		9AF000000000000000000104 /* katex.min.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; name = katex.min.css; path = iM/Vendor/KaTeX/katex.min.css; sourceTree = "<group>"; };
 		9AF000000000000000000105 /* copy-tex.min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = "copy-tex.min.js"; path = "iM/Vendor/KaTeX/copy-tex.min.js"; sourceTree = "<group>"; };
 		9AF000000000000000000106 /* KaTeX-LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = "KaTeX-LICENSE.txt"; path = "iM/Vendor/KaTeX/KaTeX-LICENSE.txt"; sourceTree = "<group>"; };
-		9AF000000000000000000107 /* highlight.min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = highlight.min.js; path = "iM/Vendor/Highlight/highlight.min.js"; sourceTree = "<group>"; };
-		9AF000000000000000000108 /* highlight.min.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; name = highlight.min.css; path = "iM/Vendor/Highlight/highlight.min.css"; sourceTree = "<group>"; };
+		9AF000000000000000000107 /* highlight.min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = highlight.min.js; path = iM/Vendor/Highlight/highlight.min.js; sourceTree = "<group>"; };
+		9AF000000000000000000108 /* highlight.min.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; name = highlight.min.css; path = iM/Vendor/Highlight/highlight.min.css; sourceTree = "<group>"; };
 		9AF000000000000000000109 /* Highlight-LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = "Highlight-LICENSE.txt"; path = "iM/Vendor/Highlight/Highlight-LICENSE.txt"; sourceTree = "<group>"; };
-		9AF00000000000000000010A /* purify.min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = purify.min.js; path = "iM/Vendor/DOMPurify/purify.min.js"; sourceTree = "<group>"; };
+		9AF00000000000000000010A /* purify.min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = purify.min.js; path = iM/Vendor/DOMPurify/purify.min.js; sourceTree = "<group>"; };
 		9AF00000000000000000010B /* DOMPurify-LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = "DOMPurify-LICENSE.txt"; path = "iM/Vendor/DOMPurify/DOMPurify-LICENSE.txt"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -89,12 +89,12 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		9A0207C32FA0ED7C00092060 /* iMira */ = {
+		9A0207C32FA0ED7C00092060 /* iM */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				9A0209432FA10E6600092060 /* Exceptions for "iM" folder in "quick-look" target */,
 			);
-			path = "iM";
+			path = iM;
 			sourceTree = "<group>";
 		};
 		9A0209312FA10D4C00092060 /* quick-look */ = {
@@ -143,7 +143,7 @@
 				9AF000000000000000000109 /* Highlight-LICENSE.txt */,
 				9AF00000000000000000010A /* purify.min.js */,
 				9AF00000000000000000010B /* DOMPurify-LICENSE.txt */,
-				9A0207C32FA0ED7C00092060 /* iMira */,
+				9A0207C32FA0ED7C00092060 /* iM */,
 				9A0209312FA10D4C00092060 /* quick-look */,
 				9A02092E2FA10D4C00092060 /* Frameworks */,
 				9A0207C22FA0ED7C00092060 /* Products */,
@@ -153,7 +153,7 @@
 		9A0207C22FA0ED7C00092060 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9A0207C12FA0ED7C00092060 /* iMira.app */,
+				9A0207C12FA0ED7C00092060 /* iM.app */,
 				9A02092D2FA10D4C00092060 /* quick-look.appex */,
 			);
 			name = Products;
@@ -170,7 +170,7 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9A0207C02FA0ED7C00092060 /* iMira */ = {
+		9A0207C02FA0ED7C00092060 /* iM */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9A0207D02FA0ED7D00092060 /* Build configuration list for PBXNativeTarget "iM" */;
 			buildPhases = (
@@ -185,14 +185,14 @@
 				9A02093B2FA10D4C00092060 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				9A0207C32FA0ED7C00092060 /* iMira */,
+				9A0207C32FA0ED7C00092060 /* iM */,
 			);
-			name = "iM";
+			name = iM;
 			packageProductDependencies = (
 				9A3394092FA5AF500015D9A4 /* Markdown */,
 			);
-			productName = "iM";
-			productReference = 9A0207C12FA0ED7C00092060 /* iMira.app */;
+			productName = iM;
+			productReference = 9A0207C12FA0ED7C00092060 /* iM.app */;
 			productType = "com.apple.product-type.application";
 		};
 		9A02092C2FA10D4C00092060 /* quick-look */ = {
@@ -253,7 +253,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9A0207C02FA0ED7C00092060 /* iMira */,
+				9A0207C02FA0ED7C00092060 /* iM */,
 				9A02092C2FA10D4C00092060 /* quick-look */,
 			);
 		};
@@ -442,10 +442,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = K9UF7A2D7Y;
 				ENABLE_APP_SANDBOX = NO;
 				ENABLE_HARDENED_RUNTIME = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -478,10 +479,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = K9UF7A2D7Y;
 				ENABLE_APP_SANDBOX = NO;
 				ENABLE_HARDENED_RUNTIME = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -512,9 +514,10 @@
 		9A02093E2FA10D4C00092060 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = K9UF7A2D7Y;
 				ENABLE_APP_SANDBOX = NO;
 				ENABLE_HARDENED_RUNTIME = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -540,9 +543,10 @@
 		9A02093F2FA10D4C00092060 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = K9UF7A2D7Y;
 				ENABLE_APP_SANDBOX = NO;
 				ENABLE_HARDENED_RUNTIME = NO;
 				GENERATE_INFOPLIST_FILE = YES;
