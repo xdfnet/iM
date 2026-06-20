@@ -38,7 +38,7 @@
 make install
 ```
 
-安装后通过 Finder 双击 `.md` 文件即可打开，或使用「文件 → 打开」。
+安装后首次打开 iM 会自动注册 QuickLook 预览扩展，此后 Finder 空格键即可预览 Markdown 文件。通过 Finder 双击 `.md` 文件即可打开，或使用「文件 → 打开」。
 
 ## 构建
 

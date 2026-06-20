@@ -1,6 +1,16 @@
 # 更新日志
 
-## [2.0.1] — 2026-06-19
+## [2.1.0] — 2026-06-20
+
+### 新增
+
+- **QuickLook 扩展首次启动自注册。** 不再需要安装后手动执行 `pluginkit` 命令，app 首次打开（或升级后）自动注册 QuickLook 预览扩展。
+- **`make clean` 增强。** 自动清理 LaunchServices 中指向已不存在路径的旧注册，避免系统设置中出现重复条目。
+
+### 变更
+
+- **`make install` 简化。** 安装时只做 LaunchServices 注册，QuickLook 扩展注册交给 app 自行管理。
+- **新增 `doc/extensions-troubleshooting.md`。** 扩展重复注册排查指南。
 
 ### 修复
 
