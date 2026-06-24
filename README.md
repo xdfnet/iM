@@ -20,11 +20,29 @@
 | 配置 | JSON | `.json` |
 | 配置 | TOML | `.toml` |
 | 配置 | XML / Plist | `.xml` `.plist` |
+| 配置 | INI | `.ini` `.cfg` `.conf` |
 | 脚本 | Shell | `.sh` `.bash` `.zsh` |
+| 脚本 | Ruby | `.rb` `.rbw` |
+| 脚本 | PHP | `.php` |
+| 脚本 | Perl | `.pl` `.pm` |
+| 脚本 | Lua | `.lua` |
+| 脚本 | R | `.r` |
+| Web | HTML | `.html` `.htm` |
+| Web | CSS | `.css` |
+| Web | SCSS | `.scss` |
+| Web | JavaScript | `.js` |
+| Web | TypeScript | `.ts` `.tsx` |
+| Web | GraphQL | `.graphql` `.gql` |
 | 代码 | Swift | `.swift` |
 | 代码 | Python | `.py` |
-| 代码 | JavaScript | `.js` |
-| 样式 | CSS | `.css` |
+| 代码 | C | `.c` `.h` |
+| 代码 | C++ | `.cpp` `.cc` `.cxx` `.hpp` |
+| 代码 | Objective-C | `.m` |
+| 代码 | Rust | `.rs` |
+| 代码 | Go | `.go` |
+| 代码 | Kotlin | `.kt` `.kts` |
+| 代码 | SQL | `.sql` |
+| 其他 | Diff/Patch | `.diff` `.patch` |
 
 ## 特性
 

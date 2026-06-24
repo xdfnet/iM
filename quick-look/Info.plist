@@ -27,6 +27,24 @@
 				<string>public.json</string>
 				<string>public.yaml</string>
 				<string>public.toml</string>
+				<string>public.c-source</string>
+				<string>public.c-plus-plus-source</string>
+				<string>public.html</string>
+				<string>public.ini</string>
+				<string>public.objective-c-source</string>
+				<string>public.perl-script</string>
+				<string>public.php-script</string>
+				<string>public.ruby-script</string>
+				<string>net.daringfireball.im.typescript</string>
+				<string>net.daringfireball.im.rust</string>
+				<string>net.daringfireball.im.go</string>
+				<string>net.daringfireball.im.kotlin</string>
+				<string>net.daringfireball.im.sql</string>
+				<string>net.daringfireball.im.scss</string>
+				<string>net.daringfireball.im.graphql</string>
+				<string>net.daringfireball.im.lua</string>
+				<string>net.daringfireball.im.r</string>
+				<string>net.daringfireball.im.diff</string>
 			</array>
 			<key>QLSupportsSearchableItems</key>
 			<false/>

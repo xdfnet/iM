@@ -1,5 +1,12 @@
 # 更新日志
 
+## [3.1.0] — 2026-06-24
+
+### 新增
+
+- **支持 28 种文件类型预览。** 新增 18 种：C/C++、Objective-C、Ruby、PHP、Perl、HTML、INI、TypeScript、Rust、Go、Kotlin、SQL、SCSS、GraphQL、Lua、R、Diff/Patch。所有类型均支持语法高亮。
+
+
 ## [3.0.1] — 2026-06-24
 
 ### 优化
