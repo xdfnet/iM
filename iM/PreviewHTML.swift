@@ -261,6 +261,14 @@ nonisolated enum PreviewHTML {
 
     private static let footnoteReferenceRegex = regex(#"\[\^([^\]\n]+)\]"#)
 
+    // Replaces the placeholder tokens emitted during footnote extraction.
+    // Single-pass scan — O(n) instead of O(n·k) for the previous per-token
+    // `replacingOccurrences` loop.
+    private static let footnoteProtectTokenRegex = regex(#"iMFootnoteProtect(\d+)Token"#)
+
+    // Replaces the placeholder tokens emitted during math extraction.
+    private static let mathProtectTokenRegex = regex(#"iMProtect(\d+)Token"#)
+
     private static func extractFootnotes(from markdown: String) -> FootnoteExtraction {
         let split = splitFootnoteDefinitions(from: markdown)
         var protected: [String] = []
@@ -303,11 +311,15 @@ nonisolated enum PreviewHTML {
         }
 
         var restored = replacedReferences
-        for (i, original) in protected.enumerated() {
-            restored = restored.replacingOccurrences(
-                of: "iMFootnoteProtect\(i)Token",
-                with: original
-            )
+        if !protected.isEmpty {
+            restored = rewrite(
+                matchesOf: Self.footnoteProtectTokenRegex,
+                in: restored,
+                captureGroup: 1
+            ) { indexString in
+                let i = Int(indexString) ?? 0
+                return i < protected.count ? protected[i] : ""
+            }
         }
 
         return FootnoteExtraction(
@@ -595,11 +607,15 @@ nonisolated enum PreviewHTML {
         }
 
         var processed = afterInlineMath
-        for (i, original) in protected.enumerated() {
-            processed = processed.replacingOccurrences(
-                of: "iMProtect\(i)Token",
-                with: original
-            )
+        if !protected.isEmpty {
+            processed = rewrite(
+                matchesOf: Self.mathProtectTokenRegex,
+                in: processed,
+                captureGroup: 1
+            ) { indexString in
+                let i = Int(indexString) ?? 0
+                return i < protected.count ? protected[i] : ""
+            }
         }
 
         return MathExtraction(processedMarkdown: processed, blocks: blocks, inlines: inlines)
@@ -1220,9 +1236,12 @@ nonisolated enum PreviewHTML {
     // MARK: - Code highlighting (highlight.js)
 
     /// Excludes `language-mermaid` since renderMermaidBlocks already lifted
-    // those into `<figure>` containers before this runs.
+    // those into `<figure>` containers before this runs. The negative
+    // lookahead also rejects `language-mermaid<space>...` (gfm title info
+    // string) so a renderMermaidBlocks miss doesn't fall through to hljs
+    // and get half-highlighted as source.
     private static let highlightableCodeRegex = regex(
-        #"<pre><code class="language-(?!mermaid")[a-zA-Z0-9_+#-]+""#
+        #"<pre><code class="language-(?!mermaid[\s"])[a-zA-Z0-9_+#-]+""#
     )
 
     private static func detectHighlightableCode(in html: String) -> Bool {

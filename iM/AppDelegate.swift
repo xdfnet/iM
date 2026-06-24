@@ -28,23 +28,40 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         guard Bundle.main.bundleURL.path.hasPrefix("/Applications/") else { return }
         guard let extPath = Bundle.main.builtInPlugInsPath?.appending("/quick-look.appex") else { return }
 
-        let isRegistered = runAndCapture("/usr/bin/pluginkit", ["-m", "-i", Self.quickLookBundleID])
+        // Concurrent dispatch: probe registration first (needs stdout to detect
+        // the existing entry), then fire the two mutating `pluginkit` calls in
+        // parallel. Skips `qlmanage -r` — that resets the system-wide QL cache
+        // on every upgrade, which is unnecessary; QL discovers newly-registered
+        // extensions lazily.
+        let isRegistered = Self.runAndCapture("/usr/bin/pluginkit", ["-m", "-i", Self.quickLookBundleID])
             .contains(Self.quickLookBundleID)
 
         LSRegisterURL(Bundle.main.bundleURL as CFURL, true)
 
         if !isRegistered {
-            run("/usr/bin/pluginkit", ["-a", extPath])
-            run("/usr/bin/pluginkit", ["-e", "use", "-p", "com.apple.quicklook.preview",
-                                       "-i", Self.quickLookBundleID])
-            run("/usr/bin/qlmanage", ["-r"])
+            let group = DispatchGroup()
+            let queue = DispatchQueue(label: "net.daringfireball.imarkdown.ql-register",
+                                      qos: .userInitiated)
+            for args in [
+                ["-a", extPath],
+                ["-e", "use", "-p", "com.apple.quicklook.preview", "-i", Self.quickLookBundleID],
+            ] {
+                group.enter()
+                queue.async {
+                    _ = Self.run("/usr/bin/pluginkit", args)
+                    group.leave()
+                }
+            }
+            group.wait()
         }
 
         UserDefaults.standard.set(currentVersion, forKey: Self.registeredAppVersionKey)
     }
 
+    // Nonisolated so the concurrent registration queue can call them without
+    // crossing the @MainActor boundary. They don't touch any shared state.
     @discardableResult
-    private func run(_ path: String, _ args: [String]) -> Int32 {
+    nonisolated private static func run(_ path: String, _ args: [String]) -> Int32 {
         let process = Process()
         process.executableURL = URL(fileURLWithPath: path)
         process.arguments = args
@@ -53,7 +70,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         return process.terminationStatus
     }
 
-    private func runAndCapture(_ path: String, _ args: [String]) -> String {
+    nonisolated private static func runAndCapture(_ path: String, _ args: [String]) -> String {
         let process = Process()
         process.executableURL = URL(fileURLWithPath: path)
         process.arguments = args

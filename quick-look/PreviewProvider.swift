@@ -12,10 +12,16 @@ class PreviewProvider: NSViewController, QLPreviewingController {
         let text = try String(contentsOf: url, encoding: .utf8)
         let ext = url.pathExtension.lowercased()
 
+        // .lazy: keep KaTeX/Mermaid/Highlight out of the QLPreviewReply payload
+        // (Mermaid alone is 3MB). DOMPurify stays inline — the bootstrap's
+        // `sanitize()` fail-closed branch fires if it isn't ready by the time
+        // `populateFromTemplate` runs.
         let html: String
         switch ext {
         case "md", "markdown", "mdown", "mkd", "mkdn", "mdwn", "mdtxt", "mdtext", "":
-            html = PreviewHTML.makeHTML(from: text, allowsScroll: true)
+            html = PreviewHTML.makeHTML(from: text,
+                                        allowsScroll: true,
+                                        vendorLoading: .lazy)
 
         case "json":
             html = makeHTML(from: "json", text: text, maxBytes: 2 * 1024 * 1024)
@@ -45,7 +51,9 @@ class PreviewProvider: NSViewController, QLPreviewingController {
             html = wrapAndRender(language: "css", code: text)
 
         default:
-            html = PreviewHTML.makeHTML(from: text, allowsScroll: true)
+            html = PreviewHTML.makeHTML(from: text,
+                                        allowsScroll: true,
+                                        vendorLoading: .lazy)
         }
 
         let webView = WKWebView(frame: view.bounds)
@@ -58,7 +66,9 @@ class PreviewProvider: NSViewController, QLPreviewingController {
     /// the full Markdown pipeline — same visual experience as .md files.
     private func wrapAndRender(language: String, code: String) -> String {
         let wrapped = "```\(language)\n\(code)\n```"
-        return PreviewHTML.makeHTML(from: wrapped, allowsScroll: true)
+        return PreviewHTML.makeHTML(from: wrapped,
+                                    allowsScroll: true,
+                                    vendorLoading: .lazy)
     }
 
     /// Like `wrapAndRender`, but truncates at byte limit with a markdown notice.
@@ -80,7 +90,9 @@ class PreviewProvider: NSViewController, QLPreviewingController {
 
             > 📦 File truncated (> \(maxBytes / 1024 / 1024) MB). Full content requires a text editor.
             """
-            return PreviewHTML.makeHTML(from: wrapped, allowsScroll: true)
+            return PreviewHTML.makeHTML(from: wrapped,
+                                        allowsScroll: true,
+                                        vendorLoading: .lazy)
         }
         return wrapAndRender(language: language, code: text)
     }

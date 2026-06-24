@@ -1,5 +1,20 @@
 # 更新日志
 
+## [3.0.1] — 2026-06-24
+
+### 优化
+
+- **Quick Look 注册并行化。** `pluginkit -a` 与 `pluginkit -e` 并发执行，注册更快；移除不必要的 `qlmanage -r` 系统缓存重置。
+- **Token 还原性能提升。** 脚注和数学公式保护 token 还原从 O(n·k) 改为单次正则扫描 O(n)。
+- **Quick Look vendor 懒加载。** `vendorLoading: .lazy` 避免将 3MB Mermaid 编入 QLReply 负载，预览启动更快。
+
+### 修复
+
+- **GFM info string 边界。** `language-mermaid title` 不再被 highlight.js 误高亮为源码。
+- **Frontmatter 连续行多余空格。** 多行 continuation 拼接前 trim，消除双空格。
+- **属性 JSON5 解析静默失败。** 格式错误时输出 NSLog 便于排查。
+
+
 ## [3.0.0] — 2026-06-24
 
 ### 重大变更

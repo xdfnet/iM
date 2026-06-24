@@ -60,7 +60,11 @@ nonisolated enum Frontmatter {
             if line.first == " " || line.first == "\t", !entries.isEmpty {
                 let trimmed = line.trimmingCharacters(in: .whitespaces)
                 let prev = entries[entries.count - 1]
-                let combined = prev.value.isEmpty ? trimmed : "\(prev.value) \(trimmed)"
+                // Trim prev.value before joining so back-to-back continuations
+                // don't accumulate a trailing space (and a double space when
+                // rendered as prose).
+                let base = prev.value.trimmingCharacters(in: .whitespaces)
+                let combined = base.isEmpty ? trimmed : "\(base) \(trimmed)"
                 entries[entries.count - 1] = FrontmatterEntry(id: prev.id, key: prev.key, value: combined)
                 continue
             }

@@ -363,8 +363,15 @@ nonisolated struct EscapingHTMLFormatter: MarkupWalker {
                 }
                 let decoder = JSONDecoder()
                 decoder.allowsJSON5 = true
-                if let parsed = try? decoder.decode(ParsedAttributes.self, from: attributesData) {
+                do {
+                    let parsed = try decoder.decode(ParsedAttributes.self, from: attributesData)
                     result += " class=\"\(escapeAttribute(parsed.class))\""
+                } catch {
+                    // Surface once per malformed attribute block — silent
+                    // failure would lose the user's intent (e.g. a typo in
+                    // `.class` should be debuggable, not invisible).
+                    NSLog("[iM] inline attribute JSON5 parse failed: %@",
+                          String(describing: error))
                 }
             }
         }
