@@ -94,5 +94,4 @@ sfltool dumpbtm | grep daringfireball
 
 ## 相关文档
 
-- [构建与安装注意事项](build-notes.md) — QuickLook 插件注册步骤
 - [Mac系统扩展管理参考](https://support.apple.com/guide/mac-help/mchl53f4b73/mac) — Apple 官方文档
