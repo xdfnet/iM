@@ -1,0 +1,27 @@
+{
+  "name": "iM",
+  "version": "3.0.0",
+  "description": "优雅的 macOS Quick Look 预览工具",
+  "homepage": "https://github.com/xdfnet/iM",
+  "license": "MIT",
+  "supportedTypes": {
+    "document": ["markdown"],
+    "config": ["yaml", "json", "toml", "xml"],
+    "code": ["swift", "python", "shell", "javascript"],
+    "style": ["css"]
+  },
+  "dependencies": {
+    "swift-markdown": "0.8.0",
+    "highlight.js": "11.11.0",
+    "KaTeX": "0.16.0",
+    "Mermaid": "11.0.0",
+    "DOMPurify": "3.0.0"
+  },
+  "features": {
+    "syntaxHighlighting": true,
+    "mathFormulas": true,
+    "diagrams": true,
+    "darkMode": "auto",
+    "largeFileProtection": "2MB"
+  }
+}

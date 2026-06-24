@@ -1,0 +1,33 @@
+# Hugo Site Configuration
+baseURL = "https://example.com/"
+languageCode = "zh-CN"
+title = "iM 博客"
+
+[params]
+  description = "基于 iM Quick Look 预览工具的博客"
+  theme = "auto"
+
+  [params.author]
+    name = "飞哥"
+    email = "hi@example.com"
+
+[[menu.main]]
+  identifier = "posts"
+  name = "文章"
+  url = "/posts/"
+  weight = 1
+
+[[menu.main]]
+  identifier = "about"
+  name = "关于"
+  url = "/about/"
+  weight = 2
+
+[markup]
+  [markup.highlight]
+    style = "github"
+    lineNumbersInTable = false
+
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 4

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSExtension</key>
+	<dict>
+		<key>NSExtensionAttributes</key>
+		<dict>
+			<key>QLSupportedContentTypes</key>
+			<array>
+				<string>public.shell-script</string>
+				<string>public.swift-source</string>
+				<string>public.python-script</string>
+				<string>public.xml</string>
+				<string>com.netscape.javascript-source</string>
+				<string>public.css</string>
+				<string>public.markdown</string>
+				<string>net.daringfireball.markdown</string>
+				<string>net.ia.markdown</string>
+				<string>com.unknown.md</string>
+				<string>net.daringfireball.im.mdown</string>
+				<string>net.daringfireball.im.mkd</string>
+				<string>net.daringfireball.im.mkdn</string>
+				<string>net.daringfireball.im.mdwn</string>
+				<string>net.daringfireball.im.mdtxt</string>
+				<string>net.daringfireball.im.mdtext</string>
+				<string>public.json</string>
+				<string>public.yaml</string>
+				<string>public.toml</string>
+			</array>
+			<key>QLSupportsSearchableItems</key>
+			<false/>
+		</dict>
+		<key>NSExtensionPointIdentifier</key>
+		<string>com.apple.quicklook.preview</string>
+		<key>NSExtensionPrincipalClass</key>
+		<string>$(PRODUCT_MODULE_NAME).PreviewProvider</string>
+	</dict>
+</dict>
+</plist>

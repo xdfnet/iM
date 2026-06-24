@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>iM 更新日志</title>
+  <link href="https://example.com/feed.xml" rel="self"/>
+  <updated>2026-06-24T00:00:00Z</updated>
+  <author>
+    <name>飞哥</name>
+  </author>
+  <entry>
+    <title>v3.0.0 发布</title>
+    <link href="https://example.com/releases/3.0.0"/>
+    <updated>2026-06-24T00:00:00Z</updated>
+    <summary>重新定位为纯 Quick Look 预览工具，支持 10 种文件类型。</summary>
+    <content type="html">
+      &lt;p&gt;统一渲染管线，语法高亮、数学公式、图表渲染。&lt;/p&gt;
+    </content>
+  </entry>
+  <entry>
+    <title>v2.0.0 发布</title>
+    <link href="https://example.com/releases/2.0.0"/>
+    <updated>2026-06-14T00:00:00Z</updated>
+    <summary>项目重命名，清理冗余身份。</summary>
+  </entry>
+</feed>
