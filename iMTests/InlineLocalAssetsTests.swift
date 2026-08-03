@@ -1,5 +1,4 @@
 import XCTest
-@testable import QuickLookHelpers
 
 final class InlineLocalAssetsTests: XCTestCase {
 
@@ -14,8 +13,6 @@ final class InlineLocalAssetsTests: XCTestCase {
 
     private let red = Data([0xDE, 0xAD, 0xBE, 0xEF])
     private let blue = Data([0xCA, 0xFE, 0xBA, 0xBE])
-
-    // MARK: - Rewriting
 
     func testRelativePathBecomesCID() {
         let html = #"<p><img src="images/local.png" alt="x"></p>"#
@@ -60,8 +57,6 @@ final class InlineLocalAssetsTests: XCTestCase {
         )
         XCTAssertEqual(result.attachments.values.first?.pathExtension, "jpg")
     }
-
-    // MARK: - Untouched cases
 
     func testHTTPSrcLeftAlone() {
         let html = #"<img src="https://example.com/a.png">"#
@@ -115,8 +110,6 @@ final class InlineLocalAssetsTests: XCTestCase {
         XCTAssertTrue(result.attachments.isEmpty)
     }
 
-    // MARK: - Failure tolerance
-
     func testReadFailureLeavesSrcAlone() {
         let html = #"<img src="missing.png">"#
         let result = InlineLocalAssets.rewriteRelativeImages(
@@ -127,8 +120,6 @@ final class InlineLocalAssetsTests: XCTestCase {
         XCTAssertEqual(result.html, html)
         XCTAssertTrue(result.attachments.isEmpty)
     }
-
-    // MARK: - Budgets
 
     func testPerImageByteCapSkipsOversizedAsset() {
         let big = Data(repeating: 0xAA, count: 10_000)
@@ -170,8 +161,6 @@ final class InlineLocalAssetsTests: XCTestCase {
         XCTAssertTrue(result.html.contains(#"src="b.png""#))
         XCTAssertTrue(result.html.contains(#"src="c.png""#))
     }
-
-    // MARK: - Determinism / dedupe
 
     func testIdenticalSrcReusesSameCID() {
         let html = #"<img src="x.png"> and <img src="x.png">"#

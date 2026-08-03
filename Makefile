@@ -42,7 +42,8 @@ clean:
 	@echo "=== 完成 ==="
 
 test:
-	swift test --package-path iMTests/swift-tests
+	xcodebuild -project $(XCODE_PROJECT) -scheme $(SCHEME) -configuration Debug test \
+		CODE_SIGN_IDENTITY="-" CODE_SIGN_STYLE=Manual
 
 run:
 	open -a /Applications/iM.app $(file)

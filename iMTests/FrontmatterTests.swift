@@ -1,7 +1,5 @@
 import XCTest
 
-@testable import PreviewHelpers
-
 final class FrontmatterTests: XCTestCase {
 
     func testSplitsYamlFrontmatter() {

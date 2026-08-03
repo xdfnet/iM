@@ -1,9 +1,5 @@
 import XCTest
-@testable import PreviewHelpers
 
-// Info-string parsing is covered by CodeFenceInfoTests. This single test just
-// confirms the formatter wires that parser into the `language-` class so the
-// trailing metadata (e.g. ```mermaid some-name) does not leak into HTML.
 final class EscapingHTMLFormatterTests: XCTestCase {
 
     func testFencedCodeBlockSetsLanguageClassFromFirstInfoWord() {
@@ -109,9 +105,6 @@ final class EscapingHTMLFormatterTests: XCTestCase {
     }
 
     func testGitHubAlertEscapesPlainTextInCustomTitle() {
-        // Ampersands and lone `<`/`>` in text should round-trip as entities.
-        // Inline HTML (e.g. <script>) is parsed as InlineHTML and passed
-        // through by design — DOMPurify handles that at render time.
         let html = EscapingHTMLFormatter.format("> [!CAUTION] R&D < 5")
         XCTAssertTrue(
             html.contains("R&amp;D &lt; 5"),

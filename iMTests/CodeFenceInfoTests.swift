@@ -1,10 +1,6 @@
 import XCTest
 
-@testable import PreviewHelpers
-
 final class CodeFenceInfoTests: XCTestCase {
-
-    // MARK: - Language extraction
 
     func testBareLanguageBecomesLowercaseLanguageWithEmptyMetadata() {
         let info = CodeFenceInfo(rawInfoString: "Swift")
@@ -13,7 +9,6 @@ final class CodeFenceInfoTests: XCTestCase {
     }
 
     func testFirstWhitespaceSeparatedTokenIsTheLanguage() {
-        // ```mermaid some-name → language is mermaid; rest is metadata.
         let info = CodeFenceInfo(rawInfoString: "mermaid some-name")
         XCTAssertEqual(info.language, "mermaid")
         XCTAssertEqual(info.metadata, "some-name")
@@ -26,14 +21,10 @@ final class CodeFenceInfoTests: XCTestCase {
     }
 
     func testMetadataPreservesInternalWhitespaceAndCasing() {
-        // CommonMark says only language is "first word"; metadata is left as-is
-        // (modulo surrounding-whitespace trimming) so callers can parse it.
         let info = CodeFenceInfo(rawInfoString: "ts  Title=\"Foo Bar\"  {1,3}")
         XCTAssertEqual(info.language, "ts")
         XCTAssertEqual(info.metadata, "Title=\"Foo Bar\"  {1,3}")
     }
-
-    // MARK: - Trimming and empty cases
 
     func testLeadingAndTrailingWhitespaceIsTrimmedBeforeSplitting() {
         let info = CodeFenceInfo(rawInfoString: "   mermaid   some-name   ")
