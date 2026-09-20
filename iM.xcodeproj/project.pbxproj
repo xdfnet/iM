@@ -91,6 +91,7 @@
 				AssetSchemeHandler.swift,
 				CodeFenceInfo.swift,
 				EscapingHTMLFormatter.swift,
+				FileContentRenderer.swift,
 				Frontmatter.swift,
 				PreviewHTML.swift,
 			);
@@ -110,9 +111,13 @@
 		9A02095A2FA10E6600092060 /* Exceptions for "iM" folder in "iMTests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				AssetSchemeHandler.swift,
 				CodeFenceInfo.swift,
 				EscapingHTMLFormatter.swift,
+				FileContentRenderer.swift,
+				FileWatcher.swift,
 				Frontmatter.swift,
+				PreviewHTML.swift,
 				Tests/CodeFenceInfoTests.swift,
 				Tests/EscapingHTMLFormatterTests.swift,
 				Tests/FrontmatterTests.swift,
