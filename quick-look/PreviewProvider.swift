@@ -21,7 +21,17 @@ class PreviewProvider: NSViewController, QLPreviewingController {
             vendorLoading: .lazy
         )
 
-        let webView = WKWebView(frame: view.bounds)
+        // The lazy renderer points vendor <script src> at
+        // `md-asset:///__vendor/...`; register the handler so WKWebView can
+        // load KaTeX/Mermaid/Highlight out of the extension's own Resources.
+        // Without it Space-preview shows the raw formulas/diagrams.
+        let schemeHandler = AssetSchemeHandler()
+        schemeHandler.setBaseURL(url.deletingLastPathComponent())
+        let config = WKWebViewConfiguration()
+        config.setURLSchemeHandler(schemeHandler, forURLScheme: AssetSchemeHandler.scheme)
+
+        let webView = WKWebView(frame: view.bounds, configuration: config)
+        webView.wantsLayer = true            // macOS 15: black screen without it
         webView.autoresizingMask = [.width, .height]
         webView.loadHTMLString(rendered.html, baseURL: url.deletingLastPathComponent())
         view.addSubview(webView)
